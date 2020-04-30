@@ -12,9 +12,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2 jetli/wasm-pack-action@v0.3.0
+    - uses: jetli/wasm-pack-action@v0.3.0
       with:
         version: "latest"
-    - name: Build
-      run: npm install && pushd wasm/physics-wasm && wasm-pack build && popd && npm run build
+    - name: Build-Wasm
+      run: pushd wasm/physics-wasm && wasm-pack build && popd
+    
+    - uses: actions/checkout@v2
+    - name: Build-Npm
+      run: npm install && npm run build
     
