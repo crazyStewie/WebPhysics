@@ -12,15 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: jetli/wasm-pack-action@v0.3.0
-      with:
-        version: "latest"
-    - name: Build-Wasm
-      run: wasm-pack build
-      working-directory: wasm/physics-wasm
-
-    
     - uses: actions/checkout@v2
-    - name: Build-Npm
-      run: npm install && npm run build
+    - name: Install-wasmpack
+      run : curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+    - name: Install-npm
+      run : npm install
+    - name: Build-wasm
+      working-directory: wasm/physics-wasm
+      run : wasm-pack build
+    - name: Build-npm
+      run: npm run build
     
