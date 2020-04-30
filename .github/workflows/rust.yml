@@ -16,7 +16,7 @@ jobs:
       with:
         version: "latest"
     - name: Build-Wasm
-      run: pushd wasm/physics-wasm && wasm-pack build && popd
+      run: wasm-pack build
       working-directory: wasm/physics-wasm
 
     
