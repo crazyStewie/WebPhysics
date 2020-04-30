@@ -17,6 +17,8 @@ jobs:
         version: "latest"
     - name: Build-Wasm
       run: pushd wasm/physics-wasm && wasm-pack build && popd
+      working-directory: wasm/physics-wasm
+
     
     - uses: actions/checkout@v2
     - name: Build-Npm
