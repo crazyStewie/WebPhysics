@@ -5,6 +5,7 @@ use nphysics3d::joint::DefaultJointConstraintSet;
 use nphysics3d::force_generator::DefaultForceGeneratorSet;
 use wasm_bindgen::prelude::*;
 pub mod shapes;
+pub mod physics_body;
 
 #[wasm_bindgen]
 pub struct PhysicsServer3d {
@@ -18,18 +19,23 @@ impl PhysicsServer3d {
             world : PhysicalWorld::new(),
         }
     }
+    pub fn update(&mut self) {
+        self.world.update();
+    }
+    pub fn new_physics_body() {
+        
+    }
 }
 
 struct PhysicalWorld {
-    pub mechanical_world : DefaultMechanicalWorld<f32>,
-    pub geometrical_world : DefaultGeometricalWorld<f32>,
-    pub bodies : DefaultBodySet<f32>,
-    pub colliders : DefaultColliderSet<f32>,
-    pub joint_constraints : DefaultJointConstraintSet<f32>,
-    pub force_generators : DefaultForceGeneratorSet<f32>,
+    mechanical_world : DefaultMechanicalWorld<f32>,
+    geometrical_world : DefaultGeometricalWorld<f32>,
+    bodies : DefaultBodySet<f32>,
+    colliders : DefaultColliderSet<f32>,
+    joint_constraints : DefaultJointConstraintSet<f32>,
+    force_generators : DefaultForceGeneratorSet<f32>,
 }
 
-#[wasm_bindgen]
 impl PhysicalWorld {
     fn new() -> Self {
         Self {
@@ -41,7 +47,7 @@ impl PhysicalWorld {
             force_generators : DefaultForceGeneratorSet::new(),
         }
     }
-    fn update(&mut self) {
+    pub fn update(&mut self) {
         self.mechanical_world.step(
             &mut self.geometrical_world, 
             &mut self.bodies, 
@@ -49,4 +55,5 @@ impl PhysicalWorld {
             &mut self.joint_constraints, 
             &mut self.force_generators);
     }
+
 }

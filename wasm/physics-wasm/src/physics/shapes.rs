@@ -7,11 +7,8 @@ pub enum ShapeType {
     Plane(f32),
     Mesh(Vec<f32>),
 }
+
 #[wasm_bindgen]
 pub struct CollisionShape {
-    shapeType : ShapeType,
-}
-
-impl CollisionShape {
-    
+    shape_type : ShapeType,
 }
