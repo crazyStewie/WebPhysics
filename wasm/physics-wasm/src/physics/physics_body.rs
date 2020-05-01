@@ -8,6 +8,17 @@ pub struct PhysicsBody {
     handle : DefaultBodyHandle,
 }
 
+impl PhysicsBody {
+    pub fn new(handle : DefaultBodyHandle) -> Self {
+        return Self{
+            handle,
+        }
+    }
+    pub fn get_handle(&self) -> &DefaultBodyHandle {
+        return &self.handle;
+    }
+}
+
 #[wasm_bindgen]
 pub enum BodyType {
     Static,
