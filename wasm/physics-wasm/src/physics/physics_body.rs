@@ -9,11 +9,6 @@ pub struct PhysicsBody {
 }
 
 #[wasm_bindgen]
-pub struct CollisionShape {
-    handle : DefaultColliderHandle,
-}
-
-#[wasm_bindgen]
 pub enum BodyType {
     Static,
     Dynamic,
